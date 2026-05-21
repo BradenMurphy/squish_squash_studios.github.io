@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Vibrant, messy play and sensory development classes for toddlers and babies in Durbanville. Edible-safe materials, stress-free cleanup, and sensory growth!">
+    <meta name="keywords"
+        content="messy play Durbanville, sensory play Durbanville, child development, toddlers entertainment, sensory bins Cape Town, baby sensory classes">
+    <meta name="author" content="Squish Squash Studios">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://squishsquashstudios.co.za/">
+    <meta property="og:title" content="Squish Squash Studios | Messy Play & Sensory Development in Durbanville">
+    <meta property="og:description"
+        content="Where messy play meets sensory development! Fun, safe, and engaging sensory classes for babies and toddlers with stress-free cleanup.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&h=800&q=80">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Squish Squash Studios | Durbanville">
+    <meta property="twitter:description"
+        content="Vibrant messy play classes focusing on fine motor, cognitive, and social development.">
+    <meta property="twitter:image"
+        content="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&h=800&q=80">
+
+    <title>Squish Squash Studios</title>
+
+    <!-- Google Fonts: Fredoka (Playful rounded headings) & Outfit (Modern friendly body text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Leaflet Maps CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+</head>
+
+<body>
+
+    <!-- Floating Background Splats and Blobs -->
+    <div class="blob-bg blob-1"></div>
+    <div class="blob-bg blob-2"></div>
+    <div class="blob-bg blob-3"></div>
+
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#hero" class="logo" aria-label="Squish Squash Studios home">
+                <span class="logo-icon">🎨</span>
+                <span class="logo-text">Squish <span class="accent-text">Squash</span></span>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#classes" class="nav-link">Classes</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#faq" class="nav-link">FAQs</a></li>
+                    <li><a href="#contact" class="nav-link nav-btn">Book Now</a></li>
+                </ul>
+            </nav>
+
+            <button class="hamburger-menu" id="menuToggle" aria-label="Toggle menu" aria-controls="navMenu"
+                aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge">🎨 Sensory Play Durbanville</div>
+                    <h1 class="hero-title">Welcome to <span class="highlight-pink">Squish</span> <span
+                            class="highlight-turquoise">Squash</span> Studios</h1>
+                    <p class="hero-subtitle">Where messy play meets sensory development! We provide creative, joyful,
+                        and fully-managed messy play experiences that ignite your child’s curiosity while you leave the
+                        cleanup to us.</p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary shadow-pulse">Book a Class 🚀</a>
+                        <a href="#classes" class="btn btn-secondary">Explore Schedule</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <!-- High quality Unsplash messy play child -->
+                    <div class="hero-image-card">
+                        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&h=800&q=80"
+                            alt="Happy smiling toddler covered in bright colorful paint doing sensory messy play"
+                            class="hero-img" loading="eager">
+                        <div class="hero-image-overlay">
+                            <span class="overlay-tag">100% Non-Toxic & Safe</span>
+                        </div>
+                    </div>
+                    <!-- Cute mini squishes -->
+                    <div class="mini-splat splat-1">💦</div>
+                    <div class="mini-splat splat-2">✨</div>
+                    <div class="mini-splat splat-3">👶</div>
+                </div>
+            </div>
+            <!-- Curve shape divider -->
+            <div class="section-divider">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C26.9,8.75,57.05,18.3,88.43,26.85,154.06,44.76,226.56,64.08,321.39,56.44Z"
+                        class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- About / Benefits Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="subheading">Why Messy Play Matters</span>
+                    <h2 class="section-title">Nurturing Brains Through Squish & Squash</h2>
+                    <p class="section-desc">Messy play is more than just fun. It is a vital pathway for child growth.
+                        Squeezing, pouring, and exploring different textures sparks neurological connections, physical
+                        agility, and emotional comfort.</p>
+                </div>
+
+                <div class="benefits-grid">
+                    <!-- Benefit 1 -->
+                    <div class="benefit-card pink-border">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=400&h=300&q=80"
+                                alt="Hands of kid working with craft materials" loading="lazy">
+                        </div>
+                        <div class="card-icon pink-bg">💪</div>
+                        <h3 class="card-title">Fine & Gross Motor Skills</h3>
+                        <p class="card-desc">Squeezing soft clay, scooping slippery rice, and pouring water build finger
+                            strength, grip coordination, and overall physical agility.</p>
+                    </div>
+
+                    <!-- Benefit 2 -->
+                    <div class="benefit-card turquoise-border">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=400&h=300&q=80"
+                                alt="Child exploring colorful sorting toys" loading="lazy">
+                        </div>
+                        <div class="card-icon turquoise-bg">🧠</div>
+                        <h3 class="card-title">Cognitive & Language Growth</h3>
+                        <p class="card-desc">Children naturally categorize shapes, experiment with cause-and-effect, and
+                            discover descriptive new words like "slimey", "sticky", and "crunchy".</p>
+                    </div>
+
+                    <!-- Benefit 3 -->
+                    <div class="benefit-card orange-border">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&h=300&q=80"
+                                alt="Kids sharing paint and smiling" loading="lazy">
+                        </div>
+                        <div class="card-icon orange-bg">🤝</div>
+                        <h3 class="card-title">Social & Emotional Well-being</h3>
+                        <p class="card-desc">Our sessions build sensory resilience, reduce tactile sensitivity, and
+                            offer a cooperative, stress-free zone for children and parents to connect.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Class Details & Schedule Section -->
+        <section id="classes" class="classes-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="subheading">Our Play Sessions</span>
+                    <h2 class="section-title">Designed for Happy Kids, Loved by Parents</h2>
+                    <p class="section-desc">We structure our studio with safety and peace-of-mind at the core. All raw
+                        materials are edible-safe, full protective aprons are provided, and you get to walk away
+                        stress-free with zero cleanup.</p>
+                </div>
+
+                <!-- Three Core Commitments -->
+                <div class="commitments-bar">
+                    <div class="commitment-item">
+                        <div class="commitment-badge green-badge">✓</div>
+                        <div class="commitment-text">
+                            <h4>Edible-Safe Materials</h4>
+                            <p>Non-toxic, organic, and toddler-proof ingredients only.</p>
+                        </div>
+                    </div>
+                    <div class="commitment-item">
+                        <div class="commitment-badge purple-badge">✓</div>
+                        <div class="commitment-text">
+                            <h4>Aprons Provided</h4>
+                            <p>Full protective aprons for child & parent included.</p>
+                        </div>
+                    </div>
+                    <div class="commitment-item">
+                        <div class="commitment-badge pink-badge">✓</div>
+                        <div class="commitment-text">
+                            <h4>Stress-Free Cleanup</h4>
+                            <p>We handle the big mess. Simply wash up and leave!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="schedule-title text-center">Weekly Durbanville Studio Schedule</h3>
+
+                <!-- Responsive Schedule Grid -->
+                <div class="schedule-wrapper">
+                    <div class="schedule-header-row">
+                        <div class="col-head">Day</div>
+                        <div class="col-head">Class Name</div>
+                        <div class="col-head">Age Group</div>
+                        <div class="col-head">Time Slot</div>
+                        <div class="col-head">Pricing</div>
+                    </div>
+
+                    <div class="schedule-rows">
+                        <!-- Row 1 -->
+                        <div class="schedule-row pink-row">
+                            <div class="col-cell" data-label="Day"><strong>Wednesday</strong></div>
+                            <div class="col-cell" data-label="Class">Squish Squash Messy Play 🎨</div>
+                            <div class="col-cell" data-label="Age">All ages up to 5</div>
+                            <div class="col-cell" data-label="Time">02:00 PM - 04:00 PM</div>
+                            <div class="col-cell" data-label="Price"><strong>R200</strong> / child</div>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="schedule-row orange-row">
+                            <div class="col-cell" data-label="Day"><strong>Saturday</strong></div>
+                            <div class="col-cell" data-label="Class">Family Messy Fun 🎉</div>
+                            <div class="col-cell" data-label="Age">All ages up to 5</div>
+                            <div class="col-cell" data-label="Time">09:00 AM - 11:00 AM</div>
+                            <div class="col-cell" data-label="Price"><strong>R200</strong> / child</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-note text-center">
+                    <p>📍 <strong>Location:</strong> Durbanville Studio, 56 Plataan Road, Durbanville, Cape Town (Free
+                        parking available).</p>
+                    <a href="#contact" class="btn btn-primary mt-20">Book a Spot Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery / Look Inside Section -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="subheading">Look Inside the Fun</span>
+                    <h2 class="section-title">Laughter, Splashes, & Bright Discoveries</h2>
+                    <p class="section-desc">See the sensory magic firsthand! Here is a sneak peek into our typical
+                        classes—filled with textured spaghetti, paint play, safe foaming cream, and pure delight.</p>
+                </div>
+
+                <!-- Gallery Grid with Lightbox Interaction -->
+                <div class="gallery-grid">
+                    <!-- Photo 1 -->
+                    <div class="gallery-item" data-index="0">
+                        <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=800&q=80"
+                            alt="Toddler hands completely covered in vibrant yellow and green paint" loading="lazy"
+                            class="gallery-img">
+                        <div class="gallery-hover">
+                            <span class="zoom-icon">🔍 View Splat</span>
+                        </div>
+                    </div>
+
+                    <!-- Photo 2 -->
+                    <div class="gallery-item" data-index="1">
+                        <img src="https://images.unsplash.com/photo-1560421683-6856ea585c78?auto=format&fit=crop&w=800&q=80"
+                            alt="Children creating sensory arts and crafts at bright play tables" loading="lazy"
+                            class="gallery-img">
+                        <div class="gallery-hover">
+                            <span class="zoom-icon">🔍 View Craft</span>
+                        </div>
+                    </div>
+
+                    <!-- Photo 3 -->
+                    <div class="gallery-item" data-index="2">
+                        <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80"
+                            alt="Beautiful detailed abstract sensory swirls of foam and paint colors" loading="lazy"
+                            class="gallery-img">
+                        <div class="gallery-hover">
+                            <span class="zoom-icon">🔍 View Swirls</span>
+                        </div>
+                    </div>
+
+                    <!-- Photo 4 -->
+                    <div class="gallery-item" data-index="3">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=800&q=80"
+                            alt="Toddler hands squishing and shaping colorful organic sensory dough" loading="lazy"
+                            class="gallery-img">
+                        <div class="gallery-hover">
+                            <span class="zoom-icon">🔍 View Dough</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="subheading">Common Parent Questions</span>
+                    <h2 class="section-title">Squish Squash Studio FAQs</h2>
+                    <p class="section-desc">Got questions about messy play? We've got answers. If you don't find what
+                        you need here, feel free to pop us a WhatsApp message!</p>
+                </div>
+
+                <div class="faq-accordion-wrapper">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">What should my child (and I) wear to a session?</span>
+                            <span class="faq-icon-indicator">+</span>
+                        </button>
+                        <div class="faq-panel">
+                            <p class="faq-answer">We recommend wearing old clothes that you don't mind getting paint or
+                                food coloring on. While we provide high-coverage, toddler-sized protective aprons,
+                                sensory play is a full-body sport! Bringing a spare change of clothes and a small towel
+                                for the wash station is highly recommended.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">Are the play materials safe if my child puts them in their
+                                mouth?</span>
+                            <span class="faq-icon-indicator">+</span>
+                        </button>
+                        <div class="faq-panel">
+                            <p class="faq-answer">Yes, absolutely! The safety of your little ones is our top priority.
+                                All sensory bins, rainbow spaghetti, jellies, and play doughs are made with 100%
+                                non-toxic, edible-safe, and food-grade kitchen ingredients. While we don't encourage
+                                eating them as a snack, they are fully taste-safe!</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">What age groups are these classes suitable for?</span>
+                            <span class="faq-icon-indicator">+</span>
+                        </button>
+                        <div class="faq-panel">
+                            <p class="faq-answer">Our studio has curated setups for child milestones:
+                                <br>• <strong>Sensory Babies:</strong> 6 to 18 months (focus on soft lights, water
+                                exploration, edible slimes, texture exploration).
+                                <br>• <strong>Squish Squash Toddlers:</strong> 18 months to 4 years (more advanced
+                                pouring, stacking, matching, painting, shaving foam).
+                                <br>• <strong>Family Messy Play:</strong> 6 months to 6 years (great for siblings to
+                                play and explore together).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">How does booking and payment work?</span>
+                            <span class="faq-icon-indicator">+</span>
+                        </button>
+                        <div class="faq-panel">
+                            <p class="faq-answer">Booking is simple! You can fill out our static form below, which
+                                automatically goes to our inbox, or hit the floating WhatsApp button to chat directly
+                                with our Durbanville coordinator. Payments can be done via EFT or SnapScan before the
+                                session begins to secure your spot.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            <span class="faq-question">What if my child has allergies?</span>
+                            <span class="faq-icon-indicator">+</span>
+                        </button>
+                        <div class="faq-panel">
+                            <p class="faq-answer">We are completely allergy-aware! When you fill out the booking form,
+                                there is a dedicated field to list any dietary requirements or skin allergies (like
+                                gluten, dairy, or egg sensitivity). We customize the play bins specifically for sessions
+                                with allergy requests to keep every toddler safe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Booking Section -->
+        <section id="contact" class="contact-section">
+            <div class="container contact-container">
+                <!-- Left Column: Details -->
+                <div class="contact-info">
+                    <span class="subheading">Get in Touch</span>
+                    <h2 class="contact-title">Book Your Sensory Adventure Today!</h2>
+                    <p class="contact-text">Ready to experience the joy of worry-free messy play in Durbanville? Send us
+                        a quick request via the booking form or drop us a WhatsApp message to lock in a class. We can't
+                        wait to play!</p>
+
+                    <div class="info-items">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div class="info-details">
+                                <h5>Our Durbanville Studio</h5>
+                                <p>56 Plataan Road, Durbanville, 7550, Cape Town, South Africa</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">✉️</span>
+                            <div class="info-details">
+                                <h5>Email Support</h5>
+                                <p>kimshepherd65@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <div class="info-details">
+                                <h5>Call or WhatsApp</h5>
+                                <p>+27 82 579 1653 (Kim Shepherd)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Leaflet Map Card -->
+                    <div class="map-card">
+                        <div class="map-card-header">
+                            <span>🗺️ Durbanville Studio Map</span>
+                        </div>
+                        <div id="map" style="height: 250px; z-index: 1;"></div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Booking Form -->
+                <div class="booking-card">
+                    <h3 class="form-title">Secure a Class Spot</h3>
+                    <p class="form-subtitle">Fill in the quick details and our team will get right back to you to
+                        finalize booking.</p>
+
+                    <!-- Formspree / Web3Forms compatible booking form -->
+                    <form action="https://api.web3forms.com/submit" method="POST" id="bookingForm" class="styled-form">
+                        <!-- Replace with Web3Forms Access Key when deployed -->
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="hidden" name="subject" value="New Messy Play Booking Request">
+                        <input type="checkbox" name="botcheck" id="" style="display: none;">
+
+                        <div class="form-group">
+                            <label for="parentName">Parent's Full Name *</label>
+                            <input type="text" id="parentName" name="parent_name" placeholder="Sarah Mitchell" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactEmail">Email Address *</label>
+                                <input type="email" id="contactEmail" name="email" placeholder="sarah@example.com"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactPhone">WhatsApp Number *</label>
+                                <input type="tel" id="contactPhone" name="phone" placeholder="082 579 1653" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="childAge">Child's Age & Name *</label>
+                                <input type="text" id="childAge" name="child_info" placeholder="Leo, 2 years old"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="preferredClass">Preferred Session *</label>
+                                <select id="preferredClass" name="preferred_session" required>
+                                    <option value="" disabled selected>Select a session...</option>
+                                    <option value="Messy Play (Wed 14:00)">Messy Play (Wednesday 14:00 - 16:00)</option>
+                                    <option value="Family Messy Fun (Sat 09:00)">Family Messy Fun (Saturday 09:00 -
+                                        11:00)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="allergies">Dietary Requirements or Skin Allergies (if any)</label>
+                            <textarea id="allergies" name="allergies_requirements" rows="2"
+                                placeholder="e.g. Leo is allergic to gluten. We'd love a gluten-safe sensory tub!"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <span style="font-size: 0.85rem; color: var(--color-text-muted);">📧 Email submissions are
+                                routed through Web3Forms. Please obtain a free static API Access Key mapped to
+                                kimshepherd65@gmail.com and replace YOUR_ACCESS_KEY_HERE below.</span>
+                        </div>
+
+                        <div class="form-actions-row">
+                            <button type="submit" class="btn btn-primary w-full">Submit Booking Request 📨</button>
+                            <span class="or-separator">or</span>
+                            <a href="https://wa.me/27825791653?text=Hi%20Squish%20Squash%20Studios!%20I'd%20love%20to%20book%20a%20messy%20play%20class%20for%20my%20child."
+                                target="_blank" rel="noopener" class="btn btn-whatsapp w-full">
+                                <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12.012 2c-5.506 0-9.978 4.471-9.978 9.978 0 1.764.459 3.48 1.333 5l-1.367 4.996 5.115-1.343c1.472.802 3.123 1.222 4.9 1.223 5.497 0 9.97-4.473 9.97-9.98 0-2.667-1.04-5.176-2.927-7.062C17.186 3.037 14.683 2 12.012 2zm6.98 14.93c-.274.772-1.393 1.417-1.922 1.517-.468.087-1.077.16-3.136-.69-2.64-1.09-4.32-3.77-4.453-3.95-.133-.18-1.082-1.44-1.082-2.75 0-1.31.688-1.954.933-2.22.245-.268.536-.33.715-.33.177 0 .356.002.51.01.163.007.382-.06.596.46.222.532.755 1.847.82 1.98.066.133.11.288.02.464-.088.177-.133.288-.266.443-.133.155-.278.347-.397.465-.133.133-.277.277-.12.543.155.266.687 1.13 1.473 1.826.97.86 1.785 1.13 2.04 1.25.267.12.42.1.576-.077.155-.177.688-.8.865-1.075.177-.276.355-.23.598-.14.243.09 1.54.726 1.807.86.266.133.444.2.51.31.066.11.066.643-.208 1.415z" />
+                                </svg>
+                                Book via WhatsApp 💬
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Floating WhatsApp Bubble -->
+    <a href="https://wa.me/27825791653?text=Hi%20Squish%20Squash%20Studios!%20I'd%20love%20to%20book%20a%20messy%20play%20class%20for%20my%20child."
+        class="whatsapp-float shadow-pulse" target="_blank" rel="noopener"
+        aria-label="Chat with Durbanville Coordinator on WhatsApp">
+        <svg class="whatsapp-icon-float" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M12.012 2c-5.506 0-9.978 4.471-9.978 9.978 0 1.764.459 3.48 1.333 5l-1.367 4.996 5.115-1.343c1.472.802 3.123 1.222 4.9 1.223 5.497 0 9.97-4.473 9.97-9.98 0-2.667-1.04-5.176-2.927-7.062C17.186 3.037 14.683 2 12.012 2zm6.98 14.93c-.274.772-1.393 1.417-1.922 1.517-.468.087-1.077.16-3.136-.69-2.64-1.09-4.32-3.77-4.453-3.95-.133-.18-1.082-1.44-1.082-2.75 0-1.31.688-1.954.933-2.22.245-.268.536-.33.715-.33.177 0 .356.002.51.01.163.007.382-.06.596.46.222.532.755 1.847.82 1.98.066.133.11.288.02.464-.088.177-.133.288-.266.443-.133.155-.278.347-.397.465-.133.133-.277.277-.12.543.155.266.687 1.13 1.473 1.826.97.86 1.785 1.13 2.04 1.25.267.12.42.1.576-.077.155-.177.688-.8.865-1.075.177-.276.355-.23.598-.14.243.09 1.54.726 1.807.86.266.133.444.2.51.31.066.11.066.643-.208 1.415z" />
+        </svg>
+    </a>
+
+    <!-- Photo Lightbox Modal Overlay -->
+    <div class="lightbox-modal" id="lightboxModal" aria-hidden="true" role="dialog">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous Photo">&#10094;</button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next Photo">&#10095;</button>
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-img" id="lightboxImg">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#hero" class="logo">
+                    <span class="logo-icon">🎨</span>
+                    <span class="logo-text">Squish <span class="accent-text">Squash</span></span>
+                </a>
+                <p class="footer-desc">A safe, non-toxic, and dynamic sensory play hub in central Durbanville. Dedicated
+                    to nurturing child brains through laughter, creative splats, and worry-free messy exploration.</p>
+                <div class="social-links">
+                    <a href="https://facebook.com" class="social-link" target="_blank" rel="noopener"
+                        aria-label="Facebook">📘</a>
+                    <a href="https://www.instagram.com/squish_squash_studios/" class="social-link" target="_blank"
+                        rel="noopener" aria-label="Instagram">📸</a>
+                    <a href="https://youtube.com" class="social-link" target="_blank" rel="noopener"
+                        aria-label="YouTube">🎥</a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="#about">Benefits</a></li>
+                    <li><a href="#classes">Session Details</a></li>
+                    <li><a href="#gallery">Inside the Studio</a></li>
+                    <li><a href="#faq">Frequently Asked Questions</a></li>
+                    <li><a href="#contact">Contact Coordinates</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-hours">
+                <h5>Studio Hours</h5>
+                <ul>
+                    <li><span>Wednesday:</span> 14:00 - 16:30</li>
+                    <li><span>Saturday:</span> 09:00 - 11:30</li>
+                    <li><span>Other Days:</span> Private Bookings & Setup Only</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Squish Squash Studios. All Rights Reserved. Made with love for happy kids in Durbanville.
+                </p>
+                <p class="hosting-tag">Optimized for free hosting on GitHub Pages 🚀</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet Maps JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Scripts -->
+    <script src="./script.js"></script>
+</body>
+
+</html>
