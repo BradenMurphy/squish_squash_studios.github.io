@@ -60,7 +60,8 @@
         <div class="header-container">
             <a href="#hero" class="logo" aria-label="Squish Squash Studios home">
                 <span class="logo-icon">🎨</span>
-                <span class="logo-text">Squish <span class="accent-text">Squash Studios</span></span>
+                <span class="logo-text"><span class="logo-squish">Squish</span> <span class="logo-squash">Squash</span>
+                    <span class="logo-studios">Studios</span></span>
             </a>
 
             <nav class="nav-menu" id="navMenu">
@@ -323,7 +324,7 @@
                     <div class="faq-item">
                         <button class="faq-trigger" aria-expanded="false">
                             <span class="faq-question">What should my child (and I) wear to a session?</span>
-                            <span class="faq-icon-indicator">+</span>
+                            <span class="faq-icon-indicator"></span>
                         </button>
                         <div class="faq-panel">
                             <p class="faq-answer">We recommend wearing old clothes that you don't mind getting paint or
@@ -338,7 +339,7 @@
                         <button class="faq-trigger" aria-expanded="false">
                             <span class="faq-question">Are the play materials safe if my child puts them in their
                                 mouth?</span>
-                            <span class="faq-icon-indicator">+</span>
+                            <span class="faq-icon-indicator"></span>
                         </button>
                         <div class="faq-panel">
                             <p class="faq-answer">Yes, absolutely! The safety of your little ones is our top priority.
@@ -352,7 +353,7 @@
                     <div class="faq-item">
                         <button class="faq-trigger" aria-expanded="false">
                             <span class="faq-question">What age groups are these classes suitable for?</span>
-                            <span class="faq-icon-indicator">+</span>
+                            <span class="faq-icon-indicator"></span>
                         </button>
                         <div class="faq-panel">
                             <p class="faq-answer">Our studio has curated setups for child milestones:
@@ -370,7 +371,7 @@
                     <div class="faq-item">
                         <button class="faq-trigger" aria-expanded="false">
                             <span class="faq-question">How does booking and payment work?</span>
-                            <span class="faq-icon-indicator">+</span>
+                            <span class="faq-icon-indicator"></span>
                         </button>
                         <div class="faq-panel">
                             <p class="faq-answer">Booking is simple! You can fill out our static form below, which
@@ -384,7 +385,7 @@
                     <div class="faq-item">
                         <button class="faq-trigger" aria-expanded="false">
                             <span class="faq-question">What if my child has allergies?</span>
-                            <span class="faq-icon-indicator">+</span>
+                            <span class="faq-icon-indicator"></span>
                         </button>
                         <div class="faq-panel">
                             <p class="faq-answer">We are completely allergy-aware! When you fill out the booking form,
@@ -450,11 +451,7 @@
                         finalize booking.</p>
 
                     <!-- Formspree / Web3Forms compatible booking form -->
-                    <form action="https://api.web3forms.com/submit" method="POST" id="bookingForm" class="styled-form">
-                        <!-- Replace with Web3Forms Access Key when deployed -->
-                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                        <input type="hidden" name="subject" value="New Messy Play Booking Request">
-                        <input type="checkbox" name="botcheck" id="" style="display: none;">
+                    <form id="bookingForm" class="styled-form">
 
                         <div class="form-group">
                             <label for="parentName">Parent's Full Name *</label>
@@ -582,7 +579,8 @@
             <div class="footer-brand">
                 <a href="#hero" class="logo">
                     <span class="logo-icon">🎨</span>
-                    <span class="logo-text">Squish <span class="accent-text">Squash</span></span>
+                    <span class="logo-text"><span class="logo-squish">Squish</span> <span
+                            class="logo-squash">Squash</span> <span class="logo-studios">Studios</span></span>
                 </a>
                 <p class="footer-desc">A safe, non-toxic, and dynamic sensory play hub in central Durbanville. Dedicated
                     to nurturing child brains through laughter, creative splats, and worry-free messy exploration.</p>
@@ -631,6 +629,13 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <!-- Scripts -->
     <script src="./script.js"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        emailjs.init("YOUR_PUBLIC_KEY");
+    </script>
+
 </body>
 
 </html>

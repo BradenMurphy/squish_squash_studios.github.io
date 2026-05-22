@@ -57,6 +57,7 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -155,7 +156,7 @@ h6 {
     height: 500px;
     background: radial-gradient(circle, var(--color-turquoise-primary) 0%, transparent 70%);
     top: 30%;
-    right: -150px;
+    right: -200px;
     animation-delay: -5s;
 }
 
@@ -227,6 +228,18 @@ h6 {
 
 .accent-text {
     color: var(--color-pink-primary);
+}
+
+.logo-squish {
+    color: #D4537E;
+}
+
+.logo-squash {
+    color: #1D9E75;
+}
+
+.logo-studios {
+    color: #888780;
 }
 
 .nav-menu {
@@ -444,16 +457,16 @@ section {
 .whatsapp-float svg {
     display: block;
     margin: 0 auto;
-    width: '4px';
+    width: 28px;
     height: auto;
     transform: translateY(-1px);
-    /* fine‑tune vertical alignment */
 }
 
-background-color: var(--color-green-primary);
-color: var(--color-bg-card);
-box-shadow: var(--shadow-whatsapp);
-gap: 10px;
+.btn-whatsapp {
+    background-color: var(--color-green-primary);
+    color: var(--color-bg-card);
+    box-shadow: var(--shadow-whatsapp);
+    gap: 10px;
 }
 
 .btn-whatsapp:hover {
@@ -514,6 +527,7 @@ gap: 10px;
 /* Hero image card and mini-splats */
 .hero-image-wrapper {
     position: relative;
+    overflow: hidden;
 }
 
 .hero-image-card {
@@ -557,6 +571,7 @@ gap: 10px;
     position: absolute;
     font-size: 2.5rem;
     animation: drift 6s infinite ease-in-out;
+    pointer-events: none;
 }
 
 .splat-1 {
@@ -567,14 +582,14 @@ gap: 10px;
 
 .splat-2 {
     bottom: 20px;
-    left: -30px;
+    left: 10px;
     animation-delay: -2s;
     font-size: 2rem;
 }
 
 .splat-3 {
     top: 50%;
-    right: -40px;
+    right: 10px;
     animation-delay: -4s;
     font-size: 3rem;
 }
@@ -983,8 +998,7 @@ gap: 10px;
 }
 
 .faq-icon-indicator {
-    font-size: 1.5rem;
-    font-weight: 700;
+    flex-shrink: 0;
     color: var(--color-turquoise-primary);
     transition: var(--transition-normal);
     width: 30px;
@@ -994,7 +1008,26 @@ gap: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1;
+    position: relative;
+}
+
+.faq-icon-indicator::before,
+.faq-icon-indicator::after {
+    content: '';
+    position: absolute;
+    background-color: var(--color-turquoise-primary);
+    border-radius: 2px;
+    transition: var(--transition-normal);
+}
+
+.faq-icon-indicator::before {
+    width: 14px;
+    height: 2.0px;
+}
+
+.faq-icon-indicator::after {
+    width: 2.0px;
+    height: 14px;
 }
 
 .faq-panel {
@@ -1019,7 +1052,11 @@ gap: 10px;
 .faq-item.active .faq-icon-indicator {
     transform: rotate(45deg);
     background-color: var(--color-pink-light);
-    color: var(--color-pink-primary);
+}
+
+.faq-item.active .faq-icon-indicator::before,
+.faq-item.active .faq-icon-indicator::after {
+    background-color: var(--color-pink-primary);
 }
 
 .faq-item.active .faq-panel {
@@ -1692,6 +1729,27 @@ gap: 10px;
 
 /* Small Phones Down */
 @media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-image-wrapper {
+        padding: 0 10px;
+    }
+
+    .hero-img {
+        height: 260px;
+    }
+
+    .hero-image-card {
+        transform: none;
+        /* disable rotation on small screens to prevent overflow */
+    }
+
+    .hero-image-card:hover {
+        transform: none;
+    }
+
     .gallery-grid {
         grid-template-columns: 1fr;
     }
@@ -1707,4 +1765,25 @@ gap: 10px;
         width: 26px;
         height: 26px;
     }
+
+    /* Email floating button */
+    .email-float {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        z-index: 1000;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        background-color: #0072c6; /* email blue */
+    }
+    .email-float img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
 }
+
+/* end of styles */

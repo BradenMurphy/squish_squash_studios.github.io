@@ -44,10 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
        2. Smooth Scrolling for Navigation
        ========================================== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (trigger && panel) {
             trigger.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
-                
+
                 // Close all other accordion items (optional for clean single-expanded flow)
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item && otherItem.classList.contains('active')) {
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Keyboard support (Escape, Left, Right)
     document.addEventListener('keydown', (e) => {
         if (!lightboxModal || !lightboxModal.classList.contains('show')) return;
-        
+
         if (e.key === 'Escape') {
             closeLightbox();
         } else if (e.key === 'ArrowRight') {
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookingForm = document.getElementById('bookingForm');
 
     if (bookingForm) {
-        bookingForm.addEventListener('submit', function(e) {
+        bookingForm.addEventListener('submit', function (e) {
             // Check form validity before submission
             if (!bookingForm.checkValidity()) {
                 e.preventDefault();
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(bookingForm);
             const submitButton = bookingForm.querySelector('button[type="submit"]');
             const originalButtonText = submitButton.textContent;
-            
+
             submitButton.disabled = true;
             submitButton.textContent = 'Submitting Booking Request... ⏳';
 
@@ -221,25 +221,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 body: formData
             })
-            .then(async (response) => {
-                let json = await response.json();
-                if (response.status == 200) {
-                    // Success! Playful custom feedback card
-                    showBookingFeedback(true, 'Hurrah! 🎉 Your booking request has been sent! We will WhatsApp or email you within 24 hours to secure your spot.');
-                    bookingForm.reset();
-                } else {
-                    console.log(response);
-                    showBookingFeedback(false, json.message || 'Oops! 😔 Something went wrong. Please try again or click the WhatsApp button to chat directly!');
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                showBookingFeedback(false, 'Connection error. 🌐 Please try again or click the WhatsApp button to contact us directly!');
-            })
-            .then(() => {
-                submitButton.disabled = false;
-                submitButton.textContent = originalButtonText;
-            });
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        // Success! Playful custom feedback card
+                        showBookingFeedback(true, 'Hurrah! 🎉 Your booking request has been sent! We will WhatsApp or email you within 24 hours to secure your spot.');
+                        bookingForm.reset();
+                    } else {
+                        console.log(response);
+                        showBookingFeedback(false, json.message || 'Oops! 😔 Something went wrong. Please try again or click the WhatsApp button to chat directly!');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    showBookingFeedback(false, 'Connection error. 🌐 Please try again or click the WhatsApp button to contact us directly!');
+                })
+                .then(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                });
         });
     }
 
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alertBox.style.color = isSuccess ? 'var(--color-green-primary)' : 'var(--color-pink-primary)';
         alertBox.style.border = `2px solid ${isSuccess ? 'var(--color-green-primary)' : 'var(--color-pink-primary)'}`;
         alertBox.textContent = messageText;
-        
+
         // Animated entrance
         alertBox.style.opacity = '1';
         alertBox.style.transform = 'translateX(-50%) translateY(0)';
@@ -312,3 +312,42 @@ document.addEventListener('DOMContentLoaded', () => {
             .openPopup();
     }
 });
+
+// ================================
+// EMAILJS BOOKING FORM
+// ================================
+
+const bookingForm = document.getElementById("bookingForm");
+
+if (bookingForm) {
+    bookingForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const submitButton = bookingForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.innerHTML;
+
+        submitButton.disabled = true;
+        submitButton.innerHTML = "Sending... ⏳";
+
+        try {
+            const response = await emailjs.sendForm(
+                "YOUR_SERVICE_ID",
+                "YOUR_TEMPLATE_ID",
+                bookingForm
+            );
+
+            console.log("SUCCESS!", response.status, response.text);
+
+            alert("🎉 Booking request sent successfully! We'll contact you soon.");
+
+            bookingForm.reset();
+        } catch (error) {
+            console.error("FAILED...", error);
+
+            alert("❌ Sorry, something went wrong. Please try again or WhatsApp us directly.");
+        } finally {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+        }
+    });
+}
