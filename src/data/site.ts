@@ -16,6 +16,7 @@ export const site = {
 export const navItems = [
   { key: 'about', label: 'About' },
   { key: 'classes', label: 'Classes' },
+  { key: 'calendar', label: 'Book a Date' },
   { key: 'gallery', label: 'Gallery' },
   { key: 'faq', label: 'FAQs' },
 ]

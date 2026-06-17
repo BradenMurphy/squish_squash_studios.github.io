@@ -2,6 +2,7 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
 import Classes from './components/Classes'
+import BookingCalendar from './components/BookingCalendar'
 import Gallery from './components/Gallery'
 import Faq from './components/Faq'
 import Contact from './components/Contact'
@@ -20,6 +21,7 @@ export default function App() {
         <Hero />
         <About />
         <Classes />
+        <BookingCalendar />
         <Gallery />
         <Faq />
         <Contact />
