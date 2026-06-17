@@ -1,14 +1,20 @@
-import { useRef, useState } from 'react'
-import { Row, Col, Form, Input, Select, Button, Typography, App } from 'antd'
-import emailjs from '@emailjs/browser'
-import { site, emailjsConfig } from '../data/site'
-import { sessionOptions } from '../data/schedule'
+import { Row, Col, Form, Input, Select, Button, Typography } from 'antd'
 import { WhatsAppOutlined } from '@ant-design/icons'
+import { site } from '../data/site'
+import { sessionOptions } from '../data/schedule'
 import StudioMap from './StudioMap'
 import { brand } from '../theme'
 
 const { Title, Paragraph } = Typography
 const { TextArea } = Input
+
+interface BookingValues {
+  parent_name: string
+  phone: string
+  child_info: string
+  preferred_session: string
+  allergies_requirements?: string
+}
 
 const infoItems = [
   { icon: '📍', title: 'Our Durbanville Studio', value: site.address },
@@ -16,33 +22,25 @@ const infoItems = [
   { icon: '📞', title: 'Call or WhatsApp', value: `${site.phone} (${site.coordinator})` },
 ]
 
-export default function Contact() {
-  const { message } = App.useApp()
-  const formRef = useRef<HTMLFormElement>(null)
-  const [submitting, setSubmitting] = useState(false)
+// Build a pre-filled WhatsApp message from the booking details.
+function buildWhatsAppLink(v: BookingValues): string {
+  const lines = [
+    'Hi Squish Squash Studios! 🎨 I’d love to book a messy play class.',
+    '',
+    `Parent: ${v.parent_name}`,
+    `Child: ${v.child_info}`,
+    `Preferred session: ${v.preferred_session}`,
+    `My WhatsApp: ${v.phone}`,
+  ]
+  if (v.allergies_requirements?.trim()) {
+    lines.push(`Allergies / requirements: ${v.allergies_requirements.trim()}`)
+  }
+  return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(lines.join('\n'))}`
+}
 
-  const onFinish = async () => {
-    if (!formRef.current) return
-    setSubmitting(true)
-    try {
-      await emailjs.sendForm(
-        emailjsConfig.serviceId,
-        emailjsConfig.templateId,
-        formRef.current,
-        { publicKey: emailjsConfig.publicKey },
-      )
-      message.success(
-        'Hurrah! 🎉 Your booking request has been sent! We will WhatsApp or email you within 24 hours.',
-      )
-      formRef.current.reset()
-    } catch (err) {
-      console.error('EmailJS failed:', err)
-      message.error(
-        'Oops! 😔 Something went wrong. Please try again or tap the WhatsApp button to chat directly!',
-      )
-    } finally {
-      setSubmitting(false)
-    }
+export default function Contact() {
+  const onFinish = (values: BookingValues) => {
+    window.open(buildWhatsAppLink(values), '_blank', 'noopener')
   }
 
   return (
@@ -55,9 +53,9 @@ export default function Contact() {
               Book Your Sensory Adventure Today!
             </Title>
             <Paragraph style={{ color: brand.textMuted }}>
-              Ready to experience the joy of worry-free messy play in Durbanville? Send us a
-              quick request via the booking form or drop us a WhatsApp message to lock in a
-              class. We can't wait to play!
+              Ready to experience the joy of worry-free messy play in Durbanville? Fill in the
+              quick booking form and we’ll open WhatsApp with your details ready to send — or
+              message us directly. We can't wait to play!
             </Paragraph>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, margin: '24px 0' }}>
@@ -88,120 +86,71 @@ export default function Contact() {
                 Secure a Class Spot
               </Title>
               <Paragraph style={{ color: brand.textMuted }}>
-                Fill in the quick details and our team will get right back to you to finalize
-                booking.
+                Fill in the quick details and tap below — we’ll open WhatsApp with your booking
+                request ready to send to our Durbanville coordinator.
               </Paragraph>
 
-              {/* native <form ref> is required by emailjs.sendForm */}
-              <Form
-                ref={formRef as never}
-                component="form"
-                layout="vertical"
-                onFinish={onFinish}
-              >
+              <Form layout="vertical" onFinish={onFinish} requiredMark={false}>
                 <Form.Item
                   label="Parent's Full Name"
                   name="parent_name"
                   rules={[{ required: true, message: 'Please enter your name' }]}
                 >
-                  <Input name="parent_name" placeholder="Sarah Mitchell" />
+                  <Input placeholder="Sarah Mitchell" />
                 </Form.Item>
 
                 <Row gutter={16}>
-                  <Col xs={24} sm={12}>
-                    <Form.Item
-                      label="Email Address"
-                      name="email"
-                      rules={[
-                        { required: true, message: 'Please enter your email' },
-                        { type: 'email', message: 'Enter a valid email' },
-                      ]}
-                    >
-                      <Input name="email" placeholder="sarah@example.com" />
-                    </Form.Item>
-                  </Col>
                   <Col xs={24} sm={12}>
                     <Form.Item
                       label="WhatsApp Number"
                       name="phone"
                       rules={[{ required: true, message: 'Please enter your number' }]}
                     >
-                      <Input name="phone" placeholder="082 579 1653" />
+                      <Input placeholder="082 579 1653" />
                     </Form.Item>
                   </Col>
-                </Row>
-
-                <Row gutter={16}>
                   <Col xs={24} sm={12}>
                     <Form.Item
                       label="Child's Age & Name"
                       name="child_info"
                       rules={[{ required: true, message: 'Please tell us about your child' }]}
                     >
-                      <Input name="child_info" placeholder="Leo, 2 years old" />
+                      <Input placeholder="Leo, 2 years old" />
                     </Form.Item>
-                  </Col>
-                  <Col xs={24} sm={12}>
-                    <Form.Item
-                      label="Preferred Session"
-                      name="preferred_session"
-                      rules={[{ required: true, message: 'Please choose a session' }]}
-                    >
-                      <Select
-                        placeholder="Select a session..."
-                        options={sessionOptions}
-                        onChange={(val) => {
-                          // keep a hidden input in sync for emailjs.sendForm
-                          const el = formRef.current?.querySelector<HTMLInputElement>(
-                            'input[name="preferred_session"]',
-                          )
-                          if (el) el.value = val
-                        }}
-                      />
-                    </Form.Item>
-                    <input type="hidden" name="preferred_session" />
                   </Col>
                 </Row>
+
+                <Form.Item
+                  label="Preferred Session"
+                  name="preferred_session"
+                  rules={[{ required: true, message: 'Please choose a session' }]}
+                >
+                  <Select placeholder="Select a session..." options={sessionOptions} />
+                </Form.Item>
 
                 <Form.Item
                   label="Dietary Requirements or Skin Allergies (if any)"
                   name="allergies_requirements"
                 >
                   <TextArea
-                    name="allergies_requirements"
                     rows={2}
                     placeholder="e.g. Leo is allergic to gluten. We'd love a gluten-safe sensory tub!"
                   />
                 </Form.Item>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    size="large"
-                    loading={submitting}
-                    style={{ flex: 1, minWidth: 200 }}
-                  >
-                    Submit Booking Request
-                  </Button>
-                  <span style={{ color: brand.textMuted }}>or</span>
-                  <Button
-                    size="large"
-                    href={site.whatsapp}
-                    target="_blank"
-                    rel="noopener"
-                    icon={<WhatsAppOutlined />}
-                    style={{
-                      flex: 1,
-                      minWidth: 200,
-                      background: brand.whatsapp,
-                      borderColor: brand.whatsapp,
-                      color: '#fff',
-                    }}
-                  >
-                    Book via WhatsApp
-                  </Button>
-                </div>
+                <Button
+                  htmlType="submit"
+                  size="large"
+                  icon={<WhatsAppOutlined />}
+                  block
+                  style={{
+                    background: brand.whatsapp,
+                    borderColor: brand.whatsapp,
+                    color: '#fff',
+                  }}
+                >
+                  Send Booking via WhatsApp
+                </Button>
               </Form>
             </div>
           </Col>
