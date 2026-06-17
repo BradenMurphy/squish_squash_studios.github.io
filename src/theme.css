@@ -1,0 +1,177 @@
+/* ==========================================================================
+   Custom styling that antd does not provide:
+   fonts, blob backgrounds, hero divider, animated splats, section rhythm.
+   ========================================================================== */
+
+:root {
+  --color-pink: hsl(330, 85%, 60%);
+  --color-pink-light: hsl(330, 90%, 95%);
+  --color-turquoise: hsl(174, 80%, 40%);
+  --color-orange: hsl(25, 95%, 55%);
+  --color-purple: hsl(265, 75%, 60%);
+  --color-green: hsl(145, 65%, 45%);
+  --color-bg-base: hsl(40, 30%, 98%);
+  --color-bg-alt: hsl(210, 20%, 97%);
+  --color-text-dark: hsl(210, 30%, 15%);
+  --color-text-muted: hsl(210, 15%, 45%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', system-ui, sans-serif;
+  color: var(--color-text-dark);
+  background-color: var(--color-bg-base);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5,
+.font-display {
+  font-family: 'Fredoka', 'Outfit', sans-serif;
+}
+
+/* Layout helpers ---------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  position: relative;
+  padding: 96px 0;
+  z-index: 1;
+}
+
+.section--alt {
+  background-color: var(--color-bg-alt);
+}
+
+.section-header {
+  max-width: 720px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  margin: 8px 0 16px;
+  font-weight: 600;
+}
+
+.subheading {
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: var(--color-pink);
+}
+
+.section-desc {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+}
+
+/* Floating background blobs ----------------------------------------------- */
+.blob-bg {
+  position: fixed;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
+  animation: blob-float 18s ease-in-out infinite;
+}
+
+.blob-1 {
+  width: 420px;
+  height: 420px;
+  top: -120px;
+  left: -120px;
+  background: var(--color-pink-light);
+}
+
+.blob-2 {
+  width: 380px;
+  height: 380px;
+  bottom: -100px;
+  right: -100px;
+  background: hsl(174, 80%, 90%);
+  animation-delay: -6s;
+}
+
+.blob-3 {
+  width: 300px;
+  height: 300px;
+  top: 40%;
+  right: 10%;
+  background: hsl(48, 100%, 90%);
+  animation-delay: -12s;
+}
+
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.08); }
+  66% { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+/* Hero curve divider ------------------------------------------------------ */
+.section-divider {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+}
+
+.section-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.section-divider .shape-fill {
+  fill: var(--color-bg-base);
+}
+
+/* Animated splats & pulse ------------------------------------------------- */
+.mini-splat {
+  position: absolute;
+  font-size: 2rem;
+  animation: splat-bounce 3s ease-in-out infinite;
+}
+
+@keyframes splat-bounce {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-14px) rotate(5deg); }
+}
+
+.shadow-pulse {
+  animation: shadow-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes shadow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 hsla(330, 85%, 60%, 0.4); }
+  50% { box-shadow: 0 0 0 16px hsla(330, 85%, 60%, 0); }
+}
+
+/* Brand logo gradient text ------------------------------------------------ */
+.logo-squish { color: var(--color-pink); }
+.logo-squash { color: var(--color-turquoise); }
+.logo-studios { color: var(--color-orange); }
+
+/* Leaflet popup needs to sit above antd content but below modals */
+.leaflet-container {
+  border-radius: 16px;
+  font-family: 'Outfit', sans-serif;
+}
