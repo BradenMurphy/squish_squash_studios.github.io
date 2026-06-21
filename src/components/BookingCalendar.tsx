@@ -121,8 +121,6 @@ export default function BookingCalendar() {
               borderRadius: 24,
               padding: isMobile ? 8 : 24,
               boxShadow: '0 10px 15px -3px rgba(0,0,0,0.08)',
-              maxWidth: 900,
-              margin: '0 auto',
             }}
           >
             <Calendar

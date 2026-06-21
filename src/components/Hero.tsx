@@ -1,7 +1,8 @@
-import { Row, Col, Button, Tag, Typography } from 'antd'
+import { Row, Col, Button, Tag, Typography, Grid } from 'antd'
 import { brand } from '../theme'
 
 const { Title, Paragraph } = Typography
+const { useBreakpoint } = Grid
 
 function scrollTo(id: string) {
   const el = document.getElementById(id)
@@ -12,11 +13,21 @@ function scrollTo(id: string) {
 }
 
 export default function Hero() {
+  const screens = useBreakpoint()
+  const isMobile = !screens.md
+
   return (
-    <section id="hero" style={{ position: 'relative', padding: '72px 0 120px' }}>
+    <section
+      id="hero"
+      style={{ position: 'relative', padding: isMobile ? '16px 0 90px' : '72px 0 120px' }}
+    >
       <div className="container">
         <Row gutter={[48, 48]} align="middle">
           <Col xs={24} md={12}>
+            <Title style={{ fontSize: 'clamp(2.2rem, 5vw, 3.4rem)', marginTop: 0 }}>
+              Welcome to <span style={{ color: brand.pink }}>Squish</span>{' '}
+              <span style={{ color: brand.turquoise }}>Squash</span> Studios
+            </Title>
             <Tag
               style={{
                 borderRadius: 999,
@@ -30,10 +41,6 @@ export default function Hero() {
             >
               🎨 Sensory Play Durbanville
             </Tag>
-            <Title style={{ fontSize: 'clamp(2.2rem, 5vw, 3.4rem)', marginTop: 0 }}>
-              Welcome to <span style={{ color: brand.pink }}>Squish</span>{' '}
-              <span style={{ color: brand.turquoise }}>Squash</span> Studios
-            </Title>
             <Paragraph style={{ fontSize: '1.15rem', color: brand.textMuted }}>
               Where messy play meets sensory development! We provide creative, joyful, and
               fully-managed messy play experiences that ignite your child’s curiosity while
@@ -45,12 +52,12 @@ export default function Hero() {
                 size="large"
                 shape="round"
                 className="shadow-pulse"
-                onClick={() => scrollTo('contact')}
+                onClick={() => scrollTo('calendar')}
               >
                 Book a Class 🚀
               </Button>
               <Button size="large" shape="round" onClick={() => scrollTo('classes')}>
-                Explore Schedule
+                Explore Classes
               </Button>
             </div>
           </Col>
@@ -85,7 +92,7 @@ export default function Hero() {
                   100% Non-Toxic &amp; Safe
                 </div>
               </div>
-              <div className="mini-splat" style={{ top: -16, left: -12 }}>💦</div>
+              <div className="mini-splat" style={{ top: -16, left: -12 }}>🌈</div>
               <div className="mini-splat" style={{ top: 30, right: -10, animationDelay: '-1s' }}>✨</div>
               <div className="mini-splat" style={{ bottom: -10, right: 40, animationDelay: '-2s' }}>👶</div>
             </div>

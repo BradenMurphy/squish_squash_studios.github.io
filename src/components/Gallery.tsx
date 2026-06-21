@@ -5,7 +5,7 @@ const { Title, Paragraph } = Typography
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="section">
+    <div id="gallery" className="section-block">
       <div className="container">
         <div className="section-header">
           <span className="subheading">Look Inside the Fun</span>
@@ -39,6 +39,6 @@ export default function Gallery() {
           </Row>
         </Image.PreviewGroup>
       </div>
-    </section>
+    </div>
   )
 }

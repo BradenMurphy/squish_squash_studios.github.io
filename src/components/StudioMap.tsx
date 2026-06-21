@@ -1,40 +1,60 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import L from 'leaflet'
+import { Button } from 'antd'
+import { EnvironmentOutlined } from '@ant-design/icons'
 import { site } from '../data/site'
+import { brand } from '../theme'
 
-// Fix default marker icons (Vite/bundlers don't resolve Leaflet's relative paths).
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png'
-import markerIcon from 'leaflet/dist/images/marker-icon.png'
-import markerShadow from 'leaflet/dist/images/marker-shadow.png'
+// No-key Google Maps embed (no API key / billing required for the basic query embed).
+// Query by the street address so the pin always matches the studio's real location.
+const embedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
+  site.address,
+)}&z=16&output=embed`
 
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: markerIcon2x,
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-})
+// Google's cross-platform directions URL: opens the Maps app + navigation on mobile,
+// maps.google.com with directions on desktop.
+const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+  site.address,
+)}`
 
-export default function StudioMap() {
+export default function StudioMap({
+  height = 250,
+  fullBleed = false,
+}: {
+  height?: number
+  fullBleed?: boolean
+}) {
+  // Full-bleed breaks the map out of the centered container to span the whole viewport.
+  const bleedStyle = fullBleed
+    ? { width: '100vw', marginLeft: 'calc(50% - 50vw)', borderRadius: 0 }
+    : { width: '100%', borderRadius: 16 }
+
   return (
-    <MapContainer
-      center={site.coords}
-      zoom={16}
-      scrollWheelZoom={false}
-      style={{ height: 250, width: '100%', borderRadius: 16 }}
-    >
-      <TileLayer
-        attribution="© OpenStreetMap contributors"
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    <div style={{ position: 'relative', overflow: 'hidden', ...bleedStyle }}>
+      <iframe
+        title={`Map to ${site.name}`}
+        src={embedSrc}
+        style={{ height, width: '100%', border: 0, display: 'block' }}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
       />
-      <Marker position={site.coords}>
-        <Popup>
-          <div style={{ textAlign: 'center', fontFamily: "'Fredoka', sans-serif" }}>
-            <h4 style={{ color: 'hsl(330, 85%, 60%)', margin: '0 0 4px' }}>
-              Squish Squash Studios 🎨
-            </h4>
-            <p style={{ margin: 0, fontSize: '0.85rem' }}>56 Plataan Road, Durbanville</p>
-          </div>
-        </Popup>
-      </Marker>
-    </MapContainer>
+      <Button
+        href={directionsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        size="large"
+        shape="round"
+        icon={<EnvironmentOutlined style={{ color: brand.pink }} />}
+        style={{
+          position: 'absolute',
+          left: 24,
+          bottom: 24,
+          background: '#fff',
+          border: 'none',
+          fontWeight: 600,
+          boxShadow: '0 6px 18px rgba(0,0,0,0.22)',
+        }}
+      >
+        Get Directions
+      </Button>
+    </div>
   )
 }

@@ -48,7 +48,7 @@ h1, h2, h3, h4, h5,
 
 .section {
   position: relative;
-  padding: 96px 0;
+  padding: 56px 0;
   z-index: 1;
 }
 
@@ -56,9 +56,14 @@ h1, h2, h3, h4, h5,
   background-color: var(--color-bg-alt);
 }
 
+/* Blocks stacked inside a single combined section */
+.section-block:not(:last-child) {
+  margin-bottom: 48px;
+}
+
 .section-header {
   max-width: 720px;
-  margin: 0 auto 56px;
+  margin: 0 auto 36px;
   text-align: center;
 }
 

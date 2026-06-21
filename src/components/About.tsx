@@ -6,7 +6,7 @@ const { Title, Paragraph } = Typography
 
 export default function About() {
   return (
-    <section id="about" className="section">
+    <section id="about" className="section section--alt">
       <div className="container">
         <div className="section-header">
           <span className="subheading">Why Messy Play Matters</span>

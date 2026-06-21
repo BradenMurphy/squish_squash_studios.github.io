@@ -61,8 +61,8 @@ export default function Header() {
                 {item.label}
               </a>
             ))}
-            <Button type="primary" shape="round" onClick={() => handleNav('contact')}>
-              Book Now
+            <Button type="primary" shape="round" onClick={() => handleNav('calendar')}>
+              Book a Class
             </Button>
           </div>
         )}
@@ -86,7 +86,7 @@ export default function Header() {
         <Menu
           mode="vertical"
           selectable={false}
-          items={[...navItems, { key: 'contact', label: 'Book Now' }].map((item) => ({
+          items={navItems.map((item) => ({
             key: item.key,
             label: item.label,
             onClick: () => handleNav(item.key),
