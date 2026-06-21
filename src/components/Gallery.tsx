@@ -1,7 +1,29 @@
+import type { CSSProperties } from 'react'
 import { Row, Col, Image, Typography } from 'antd'
+import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { gallery } from '../data/gallery'
 
 const { Title, Paragraph } = Typography
+
+// Looping nav arrows for the lightbox: at either end they wrap around to the
+// other end instead of disabling (antd's built-in arrows are hidden via CSS).
+const navBtn: CSSProperties = {
+  position: 'fixed',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  zIndex: 1100,
+  width: 48,
+  height: 48,
+  borderRadius: '50%',
+  border: 'none',
+  cursor: 'pointer',
+  background: 'rgba(0, 0, 0, 0.45)',
+  color: '#fff',
+  fontSize: 20,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}
 
 export default function Gallery() {
   return (
@@ -21,7 +43,31 @@ export default function Gallery() {
 
         {/* Image.PreviewGroup gives a built-in lightbox with keyboard nav,
             replacing the hand-written modal from the original site. */}
-        <Image.PreviewGroup>
+        <Image.PreviewGroup
+          preview={{
+            toolbarRender: (originalNode, { actions: { onActive }, current, total }) => (
+              <>
+                <button
+                  type="button"
+                  aria-label="Previous image"
+                  style={{ ...navBtn, left: 24 }}
+                  onClick={() => onActive?.(current === 0 ? total - 1 : -1)}
+                >
+                  <LeftOutlined />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next image"
+                  style={{ ...navBtn, right: 24 }}
+                  onClick={() => onActive?.(current === total - 1 ? -(total - 1) : 1)}
+                >
+                  <RightOutlined />
+                </button>
+                {originalNode}
+              </>
+            ),
+          }}
+        >
           <Row gutter={[16, 16]}>
             {gallery.map((photo) => (
               <Col xs={12} md={6} key={photo.src}>

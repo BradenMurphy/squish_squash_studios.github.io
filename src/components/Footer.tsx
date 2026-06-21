@@ -1,5 +1,5 @@
 import { Layout, Row, Col, Typography } from 'antd'
-import { FacebookFilled } from '@ant-design/icons'
+import { FacebookFilled, InstagramOutlined } from '@ant-design/icons'
 import Logo from './Logo'
 import { site } from '../data/site'
 import { brand } from '../theme'
@@ -59,6 +59,40 @@ export default function Footer() {
                 style={{ display: 'inline-flex' }}
               >
                 <InstagramIcon />
+              </a>
+            </div>
+          </Col>
+
+          <Col xs={24} md={8}>
+            <div
+              style={{
+                borderRadius: 24,
+                padding: 28,
+                color: '#fff',
+                textAlign: 'center',
+                background:
+                  'radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%)',
+                boxShadow: '0 12px 24px -10px rgba(214, 41, 118, 0.7)',
+              }}
+            >
+              <InstagramOutlined style={{ fontSize: '2.4rem' }} />
+              <h4 style={{ margin: '12px 0 4px', color: '#fff' }}>Follow the messy fun</h4>
+              <p style={{ margin: 0, opacity: 0.92 }}>Like · Share · Follow @squish_squash_studios</p>
+              <a
+                href={site.instagram}
+                target="_blank"
+                rel="noopener"
+                style={{
+                  display: 'inline-block',
+                  marginTop: 16,
+                  background: '#fff',
+                  color: '#d6249f',
+                  fontWeight: 700,
+                  padding: '8px 24px',
+                  borderRadius: 999,
+                }}
+              >
+                Follow on Instagram
               </a>
             </div>
           </Col>

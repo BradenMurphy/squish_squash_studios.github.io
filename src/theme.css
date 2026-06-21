@@ -56,6 +56,13 @@ h1, h2, h3, h4, h5,
   background-color: var(--color-bg-alt);
 }
 
+/* Gallery lightbox: hide antd's built-in switch arrows (they disable at the
+   ends) in favour of the custom looping arrows in Gallery.tsx. */
+.ant-image-preview-switch-left,
+.ant-image-preview-switch-right {
+  display: none;
+}
+
 /* Blocks stacked inside a single combined section */
 .section-block:not(:last-child) {
   margin-bottom: 48px;
